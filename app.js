@@ -43,7 +43,7 @@ const addTask = function () {
   const listItem = createNewTaskElement(newTaskInput.value);
 
   incompleteTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);
+  bindTaskEvents(listItem, completedTask);
 
   newTaskInput.value = "";
 };
@@ -74,7 +74,7 @@ const deleteTask = function () {
   list.removeChild(listItem);
 };
 
-const taskCompleted = function () {
+const completedTask = function () {
   const listItem = this.parentNode;
 
   completedTasksHolder.appendChild(listItem);
@@ -84,7 +84,7 @@ const taskCompleted = function () {
 const taskIncomplete = function () {
   const listItem = this.parentNode;
   incompleteTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskCompleted);
+  bindTaskEvents(listItem, completedTask);
 };
 
 const ajaxRequest = function () {
@@ -107,7 +107,7 @@ const bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
 };
 
 for (let i = 0; i < incompleteTasksHolder.children.length; i++) {
-  bindTaskEvents(incompleteTasksHolder.children[i], taskCompleted);
+  bindTaskEvents(incompleteTasksHolder.children[i], completedTask);
 }
 
 for (let i = 0; i < completedTasksHolder.children.length; i++) {
