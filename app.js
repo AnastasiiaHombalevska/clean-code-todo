@@ -89,7 +89,6 @@ const ajaxRequest = function () {
 };
 
 //Set the click handler to the addTask function.
-addButton.onclick = addTask;
 addButton.addEventListener("click", addTask);
 addButton.addEventListener("click", ajaxRequest);
 
@@ -98,9 +97,9 @@ const bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
   const editButton = taskListItem.querySelector("button.edit");
   const deleteButton = taskListItem.querySelector("button.delete");
 
-  editButton.onclick = editTask;
-  deleteButton.onclick = deleteTask;
-  checkBox.onchange = checkBoxEventHandler;
+  editButton.addEventListener("click", editTask);
+  deleteButton.addEventListener("click", deleteTask);
+  checkBox.addEventListener("change", checkBoxEventHandler);
 };
 
 function initializeTaskEvents(tasksContainer, onStatusChange) {
