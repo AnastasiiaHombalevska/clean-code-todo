@@ -78,11 +78,12 @@ const completedTask = function () {
   const listItem = this.parentNode;
 
   completedTasksHolder.appendChild(listItem);
-  bindTaskEvents(listItem, taskIncomplete);
+  bindTaskEvents(listItem, incompleteTask);
 };
 
-const taskIncomplete = function () {
+const incompleteTask = function () {
   const listItem = this.parentNode;
+
   incompleteTasksHolder.appendChild(listItem);
   bindTaskEvents(listItem, completedTask);
 };
@@ -106,10 +107,11 @@ const bindTaskEvents = function (taskListItem, checkBoxEventHandler) {
   checkBox.onchange = checkBoxEventHandler;
 };
 
-for (let i = 0; i < incompleteTasksHolder.children.length; i++) {
-  bindTaskEvents(incompleteTasksHolder.children[i], completedTask);
+function initializeTaskEvents(tasksContainer, onStatusChange) {
+  for (let i = 0; i < tasksContainer.children.length; i++) {
+    bindTaskEvents(tasksContainer.children[i], onStatusChange);
+  }
 }
 
-for (let i = 0; i < completedTasksHolder.children.length; i++) {
-  bindTaskEvents(completedTasksHolder.children[i], taskIncomplete);
-}
+initializeTaskEvents(incompleteTasksHolder, completedTask);
+initializeTaskEvents(completedTasksHolder, incompleteTask);
