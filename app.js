@@ -110,9 +110,9 @@ const bindTaskEvents = function (taskListItem) {
   checkBox.addEventListener("change", toggleTaskStatus);
 };
 
-function initializeTaskEvents(tasksContainer, onStatusChange) {
-  for (let i = 0; i < tasksContainer.children.length; i++) {
-    bindTaskEvents(tasksContainer.children[i], onStatusChange);
+function initializeTaskEvents(tasksContainer) {
+  for (const task of tasksContainer.children) {
+    bindTaskEvents(task);
   }
 }
 
