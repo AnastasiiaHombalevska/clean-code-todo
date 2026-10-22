@@ -33,11 +33,13 @@ const createNewTaskElement = function (taskString) {
   listItem.appendChild(editInput);
   listItem.appendChild(editButton);
   listItem.appendChild(deleteButton);
+
   return listItem;
 };
 
 const addTask = function () {
   if (!newTaskInput.value) return;
+
   const listItem = createNewTaskElement(newTaskInput.value);
 
   incompleteTasksHolder.appendChild(listItem);
@@ -67,9 +69,9 @@ const editTask = function () {
 
 const deleteTask = function () {
   const listItem = this.parentNode;
-  const ul = listItem.parentNode;
+  const list = listItem.parentNode;
 
-  ul.removeChild(listItem);
+  list.removeChild(listItem);
 };
 
 const taskCompleted = function () {
